@@ -1,8 +1,8 @@
 package gotreap
 
 type Item interface {
-	LessKey(*Item) bool
-	LessPriority(*Item) bool
+	LessKey(Item) bool
+	LessPriority(Item) bool
 }
 
 type Treap struct {
@@ -19,4 +19,12 @@ func NewTreap() *Treap {
 	return &Treap{
 		Root: nil,
 	}
+}
+
+func (this *Treap) Insert(item Item) *Treap {
+	node := &Node{
+		Value: &item,
+	}
+	this.Root = node
+	return this
 }

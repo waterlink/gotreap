@@ -25,16 +25,16 @@ type MyItem struct {
   value    string
 }
 
-func (this *MyItem) LessKey(other *gotreap.Item) bool {
-  if otherItem, ok := (*other).(*MyItem); ok {
+func (this *MyItem) LessKey(other gotreap.Item) bool {
+  if otherItem, ok := other.(*MyItem); ok {
     return this.key < otherItem.key
   } else {
     return false    // or panic here
   }
 }
 
-func (this *MyItem) LessPriority(other *gotreap.Item) bool {
-  if otherItem, ok := (*other).(*MyItem); ok {
+func (this *MyItem) LessPriority(other gotreap.Item) bool {
+  if otherItem, ok := other.(*MyItem); ok {
     return this.priority < otherItem.priority
   } else {
     return false    // or panic here
