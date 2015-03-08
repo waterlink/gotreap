@@ -44,8 +44,6 @@ func (this *MyItem) LessPriority(other *gotreap.Item) bool {
 
 ### Create new empty treap
 
-*Not implemented*
-
 Complexity: `O(1)`
 
 ```go
