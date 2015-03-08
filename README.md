@@ -52,8 +52,6 @@ myset := gotreap.NewTreap()
 
 ### Insert an item into your treap
 
-*Not implemented*
-
 Complexity: `O(log N)`, where `N` - size of `myset`
 
 ```go
