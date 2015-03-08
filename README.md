@@ -26,18 +26,18 @@ type MyItem struct {
 }
 
 func (this *MyItem) LessKey(other *gotreap.Item) bool {
-  if otherItem, ok := other.(*MyItem); ok {
-    return this.key < other.key
+  if otherItem, ok := (*other).(*MyItem); ok {
+    return this.key < otherItem.key
   } else {
-    return false
+    return false    // or panic here
   }
 }
 
 func (this *MyItem) LessPriority(other *gotreap.Item) bool {
-  if otherItem, ok := other.(*MyItem); ok {
-    return this.priority < other.priority
+  if otherItem, ok := (*other).(*MyItem); ok {
+    return this.priority < otherItem.priority
   } else {
-    return false
+    return false    // or panic here
   }
 }
 ```
