@@ -70,7 +70,7 @@ myset = myset.Insert(anItem)
 Complexity: `O(log N)`
 
 ```go
-if foundItem := myset.Search(5); foundItem != nil {
+if foundItem := myset.Search(&MyItem{key: 5}); foundItem != nil {
   if anItem, ok := foundItem.(*MyItem); ok {
     // .. do something with anItem ..
   }

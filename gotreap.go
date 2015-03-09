@@ -28,3 +28,7 @@ func (this *Treap) Insert(item Item) *Treap {
 	this.Root = node
 	return this
 }
+
+func (this *Treap) Search(item Item) Item {
+	return *this.Root.Value
+}

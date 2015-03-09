@@ -34,6 +34,15 @@ func expectToBeEq(t *testing.T, actual string, expected string) {
 	}
 }
 
+func expectToFind(t *testing.T, aSet *Treap, key int, expected string) {
+	if foundItem := aSet.Search(&MyItem{key: key}); foundItem != nil {
+		anItem, _ := foundItem.(*MyItem)
+		expectToBeEq(t, anItem.value, expected)
+	} else {
+		t.Errorf("Unable to find item with key %d", key)
+	}
+}
+
 func TestInsertSimple(t *testing.T) {
 	myset := NewTreap()
 
@@ -52,4 +61,23 @@ func TestInsertSimple(t *testing.T) {
 	})
 	anotherItem := (*myset.Root.Value).(*MyItem)
 	expectToBeEq(t, "hedgehog", anotherItem.value)
+}
+
+func TestSeach(t *testing.T) {
+	myset := NewTreap()
+
+	myset = myset.Insert(&MyItem{
+		key:      5,
+		priority: 17,
+		value:    "hello world",
+	})
+	expectToFind(t, myset, 5, "hello world")
+
+	myset = myset.Insert(&MyItem{
+		key:      9,
+		priority: 25,
+		value:    "hedgehog",
+	})
+	expectToFind(t, myset, 5, "hello world")
+	expectToFind(t, myset, 9, "hedgehog")
 }
